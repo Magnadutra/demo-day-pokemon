@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+@font-face {
+  font-family: Pixels;
+  src: url(./assets/LLPIXEL3.ttf);
+}
+
+body{
+    height: 100vh;
+    background: #C52018;
+    text-align: center;
+}
+
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  font-family: "Roboto", "Pixel", sans-serif;
+}
+
+.bandeira{
+    width: 20px;
+    height: 20px;
+    padding: auto;
+    text-align: center;
+    
+}
+
+.texto {
+    margin: auto;
+    width: 800px;
+    height: auto;
+    text-align: center;
+    font-family: Pixels;
+    color: white;
+    text-shadow: 4px 4px black
+}
+
+h1{
+    padding: 30px;
+}
+
+.gif{
+    margin: auto;
+    padding: 20px;    
+}
+
+.wrap {
+  padding: 30px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-start {
+  margin: center;
+  min-width: 300px;
+  min-height: 60px;
+  font-family: Pixels;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: #313133;
+  background: #ffffff;
+  background: linear-gradient(90deg, rgb(249, 250, 250) 0%, rgb(252, 255, 255) 100%);
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(251, 255, 255, 0.64);
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 10px;
+}
+
+.btn-start::before {
+  content: '';
+  border-radius: 1000px;
+  min-width: calc(300px + 12px);
+  min-height: calc(60px + 12px);
+  border: 6px solid #cccccc;
+  box-shadow: 0 0 60px rgba(252, 253, 253, 0.64);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all .3s ease-in-out 0s;
+}
+
+.btn-start:hover, .button:focus {
+  color: #313133;
+  transform: translateY(-6px);
+}
+
+.btn-start:hover::before, button:focus::before {
+  opacity: 1;
+}
+
+.btn-start::after {
+  content: '';
+  width: 30px; height: 30px;
+  border-radius: 100%;
+  border: 6px solid #ffffff;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: 1.0s;
+}
+
+@media (max-width: 600px) {
+
+    h1{
+        font-size: 40px;
+    }
+
+    h2{
+        font-size: 30px;
+    }
+
+    .btn-start {
+        left: 60%;
+        position: relative;
+
+    }
+
+    .gif{
+        margin: auto;
+        padding: 20px;
+        left: 40%;
+        position: relative;
+        width: 500px;
+        
+    }
+}
