@@ -22,50 +22,19 @@ body {
   height: 100%;
 }
 
-.battle {
-  opacity: 0;
-  display: none;
-}
-
-.show {
-  display: block;
-  z-index: 1;
-  position: relative;
-  animation: slide 10s;
-  background-color: #c52018;
-}
-
-
-
-@keyframes slide {
-  0% {
-    top: 0px;
-  }
-  25% {
-    top: 50px;
-  }
-  50% {
-    top: 100px;
-  }
-  100% {
-    top: 200px;
-  }
-}
-
-.box {
-  width: 500px;
-  height: 150px;
-}
-
 .battleContainer {
   display: flex;
   border: 5px solid gold;
-  width: 70%;
-  height: 800px;
-  background-color: tomato;
+  width: 50%;
+  height: 100vh;
   background-image: url(./assets/pokefield.png);
   background-repeat: no-repeat;
+  background-size: 780px 485px;
+  background-position: center;
   margin: 0 auto;
+  position: relative;
+  background-color: #bad3a2;
+  
 }   
 
 .poke {
@@ -86,13 +55,14 @@ body {
 
 .poke1 {
   top: 40%;
+  left: 5%;
   height: 350px;
-  margin-left: 50px;
+  margin-left: 50px;  
 }
 
 .poke2 {
-  top: 20%;
-  left:60%;
+  top: 7%;
+  left:65%;
 }
 
 .poke1Photo {
@@ -108,6 +78,98 @@ body {
   background-position: center;
   background-position-x: 90%;
 }
+
+.winner-random {
+  animation: slideRandomPoke 5s;
+  animation-fill-mode: forwards;
+}
+
+.winner-chosen {
+  animation: slideChosenPoke 5s;
+  animation-fill-mode: forwards;
+}
+
+.box-content {
+  width: 100px;
+  height: 80px;
+  background-color: gold;
+  text-align: center;
+  position: relative;
+  top: 40%;
+  left: 40%;
+  animation: slideBox 5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideChosenPoke {
+  0% {
+    top: 40%;
+    left: 5%;
+  }
+  25% {
+    top: 30%;
+    left: 10%;
+  }
+  50% {
+    top: 20%;
+    left: 15%;
+  }
+  100% {
+    top: 10%;
+    left: 28%;
+  }
+}
+
+@keyframes slideRandomPoke {
+  0% {
+    top: 7%;
+    left: 65%;
+  }
+  100% {
+    top: 10%;
+    left: 35%;
+  }
+}
+
+@keyframes slideBox {
+  0% {
+    opacity:0;
+  }
+  100% {
+    top: 45%;
+    left: 40%;
+  }
+}
+
+.dialogue-box {
+  position: absolute;
+  top: 80%;  
+  background-color: #F7F6D0;
+  animation-name: slide;
+  animation-duration: 2s;
+}
+
+.box {
+  width: 100%;
+  height: 150px;
+  
+}
+
+@keyframes slide {
+  0% {
+    top:10px;
+  }
+  25% {
+    top: 50px;
+  }
+  50% {
+    top: 100px;
+  }
+  100% {
+    top: 200px;
+  }
+}
+
 
 .dashboard {
   width: 100%;
