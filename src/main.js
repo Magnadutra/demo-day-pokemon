@@ -1,14 +1,14 @@
 import data from './data/pokemon/pokemon.js';
 
 import {
-  filtrarPelaGeracao,
+  // filtrarPelaGeracao,
   ordenarPorNum,
   ordenarPorNome,
   filterType,
   sortCp,
   typeStats,
   filterName,
-  sortFilter
+  // sortFilter
 } from './data.js';
 
 const pokemonList = data.pokemon;
@@ -209,43 +209,28 @@ ordenarNomes.addEventListener('change', () => {
 /*let allPokemonGen;
 const pokemonListGeneration = data.pokemon;
 const displayPokesGeneration = (pokemonData) => {
-
-
   const pokeCardGeneration = document.getElementById('slider');
-
-
   allPokemonGen = pokemonData.map((elem) => {
     return `
   
        <div>
          <img class="pictures" src=" ${elem.img}"></img>
        </div>
-
        <div class="name-geracao">${elem.generation.num}
-
-
        </div> 
       `;
   });
-
   pokeCardGeneration.innerHTML = allPokemonGen.join("")
 };
-
 displayPokesGeneration(pokemonListGeneration);
-
-
 let ordernarPorGeracao;
 const ordenarGeracao = document.getElementById('ordemGeracao');
 ordenarGeracao.addEventListener('change', () => {
   const getpokes = document.getElementById('slider');
   getpokes.innerHTML = '';
   ordernarPorGeracao = ordenarGeracao.value;
-
-
   displayPokesGeneration(filtrarPelaGeracao(pokemonListGeneration, ordernarPorGeracao));
-
 });
-
 */
 const nextEl = document.getElementById('next');
 const previousEl = document.getElementById('previous');
@@ -265,7 +250,6 @@ function onPreviousClick() {
     left: (scrollAmount -= imgWidth),
     behavior: 'smooth'
   });
-
   if(scrollAmount < 0) {
     scrollAmount = 0;
   }*/
@@ -283,4 +267,3 @@ typeCalc.addEventListener('change', () => {
   filterpokes.innerHTML = `${typeStats(pokemonList, calcType)}% dos Pokemons são do tipo selecionado`;
 
 })
-
