@@ -13,6 +13,19 @@
 
 }
 
+body {
+  background-image: url(../pokefundo4.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.pikacute {
+  position: absolute;
+  float: right;
+  margin-top: 450px;
+  margin-left: 1000px;
+}
+
 /* CARDS */
 
 .card {
@@ -45,7 +58,7 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 200px;
+  margin-top: 10px;
   }
 
 .people{
@@ -150,6 +163,23 @@ h5{
 .close {
   color: red;
 }
+
+
+.btn-voltar {
+  width: 80px;
+  padding: 15px 15px;
+  border-radius: 100%;
+  transition: 0.5s all;
+  cursor: pointer;
+  margin-bottom: auto;
+  align-self: center;
+  margin-left: 615px;
+  }
+
+.btn-voltar:hover {
+  background: white;
+  color: black;
+  }
 
 @media (min-width: 360px) and (max-width: 439px){
   .container{
