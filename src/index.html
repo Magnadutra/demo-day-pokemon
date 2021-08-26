@@ -11,17 +11,18 @@
 </head>
 
 <body>
-
-  <aside class="dashboard" id="dashboard">
+<section class='filterCards'>
+  <menu class="dashboard" id="dashboard">
 
       <div class="dash-title">
         <img class="dash-icon" src="./assets/pokeballl.png">
         <h3>Poke Lovers</h3>
       </div>
-      <img class="perfil" src="https://8bitocrafts.files.wordpress.com/2013/03/pokemon-red-sprite2.jpg">
-      <h3 class="text">Bem-vindo treinador pokemon!</h3>
+      <!---<img class="perfil" src="https://8bitocrafts.files.wordpress.com/2013/03/pokemon-red-sprite2.jpg">--->
+      <!---<h3 class="text">Bem-vindo treinador pokemon!</h3>--->
       
-
+      <h3 class="typeStats" id="typeStats">Selecione um tipo de Pokemon!</h3>
+      
       <nav class="buttonfunction">
 
         <input type="text" id="search" class="seletor" autocomplete="off" placeholder="Busque um Pokemon!">
@@ -64,42 +65,25 @@
 
       </nav>
 
-      <h3 class="typeStats" id="typeStats">Selecione um tipo de Pokemon!</h3>
+    </menu>
 
-  </aside>
-
-  <div class="circle">
+ <!--<div class="circle">
     <div class="white-circle">
       <div class="border">
         <a href="contatos.html"><i data-feather="info"></i></a>
       </div>
     </div>
-  </div>
-
-  <main class="main-screen">
-
-    <section class="wrap">
-
-      <select id="ordemGeracao" autocomplete="off">
-        <option value="all">Selecione a geração</option>
-        <option value="kanto">I</option>
-        <option value="johto">II</option>
-      </select>
-
-      <div class="container-carousel">
-        <span id="previous"><i data-feather="chevron-left"></i></span>
-        <span id="next"><i data-feather="chevron-right"></i></span>
-        <div id="slider" class="slider"></div>
+  </div>--->
+    <section class="carousel-container">
+      <div class="carousel">
+        <div id="card-container" class="card-container">
+       </div>
+        <span id="previous" class="previous-btn"><i data-feather="chevron-left"></i></span>
+        <span id="next" class="next-btn"><i data-feather="chevron-right"></i></span>
       </div>
-
     </section>
-
-    <h1>Aqui você encontra as principais informações dos pokemons do mundo de Pokemon GO!</h1>
-
-    <section id="card-container" class="card-container"></section>
-
-  </main>
-
+    <!---<h1>Aqui você encontra as principais informações dos pokemons do mundo de Pokemon GO!</h1>--->
+  </section>
   <script src="https://unpkg.com/feather-icons"></script>
   <script>
     feather.replace()

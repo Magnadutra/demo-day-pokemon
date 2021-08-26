@@ -32,7 +32,10 @@ const displayPokes = (pokemonData) => {
 
     })
 
-      return allPokemonCards = `<div class="card" id="card">
+      //return allPokemonCards = 
+      pokeCard.insertAdjacentHTML("beforeend", `
+      <div class='cardBtnContainer'>
+      <div class="card" id="card">
         <div class="gridContainerUp" id="gridContainerUp"> 
           <div class="title"> ${elem.name.toUpperCase()}</div>
           <div class="number">#${elem.num}</div>
@@ -64,11 +67,16 @@ const displayPokes = (pokemonData) => {
             <div class="resistant" id="resistant">${elem.resistant.join("<br>").toUpperCase()}</div>
           </div>
       </div>
+      
     </div>
-`;
+    <div class='choosePokemon'>
+        <button type='button' class='chooseBtn'>ESCOLHER</button>
+    </div>
+    </div> 
+`);
 
   });
-  pokeCard.innerHTML = allPokemonCards.join("");
+  //pokeCard.innerHTML = allPokemonCards.join("");
 };
 displayPokes(pokemonList);
 
@@ -140,7 +148,7 @@ ordenarNomes.addEventListener('change', () => {
 
 });
 
-let allPokemonGen;
+/*let allPokemonGen;
 const pokemonListGeneration = data.pokemon;
 const displayPokesGeneration = (pokemonData) => {
 
@@ -180,19 +188,29 @@ ordenarGeracao.addEventListener('change', () => {
 
 });
 
-
+*/
 const nextEl = document.getElementById('next');
 const previousEl = document.getElementById('previous');
-const sliderEl = document.getElementById('slider')
+const sliderEl = document.getElementById('card-container');
+const imgWidth = sliderEl.offsetWidth;
+var scrollPerClick = 0;
+var scrollAmount = 0;
 
 function onNextClick() {
-
-  const imgWidth = sliderEl.offsetWidth;
   sliderEl.scrollLeft += imgWidth;
 }
 
+
 function onPreviousClick() {
-  const imgWidth = sliderEl.offsetWidth;
+  /*sliderEl.scrollTo({
+    top:0,
+    left: (scrollAmount -= imgWidth),
+    behavior: 'smooth'
+  });
+
+  if(scrollAmount < 0) {
+    scrollAmount = 0;
+  }*/
   sliderEl.scrollLeft -= imgWidth;
 }
 
