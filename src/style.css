@@ -196,8 +196,6 @@ a{
 }
 
 .title {
-  grid-row: 1;
-  grid-column: 1;
   padding: 10px;
   font-size: 15px;
   text-align: left;
@@ -205,12 +203,17 @@ a{
 }
 
 .number {
-  grid-row: 1;
-  grid-column: 2;
   padding: 10px;
   font-size: 12px;
   text-align: right;
   font-weight: bold;
+  align-self: flex-end;
+}
+
+.mainInfo {
+  display: flex;
+  grid-row: 1;
+  grid-column: 1 / 2;
 }
 
 .sideInfo {

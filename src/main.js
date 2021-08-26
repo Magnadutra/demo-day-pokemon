@@ -32,10 +32,12 @@ const displayPokes = (pokemonData) => {
 
     })
 
-      return allPokemonCards = `<div class="card" id="card">
+    return allPokemonCards = `<div class="card" id="card" data-poke=${pokemonList.indexOf(elem) + 1}>
         <div class="gridContainerUp" id="gridContainerUp"> 
-          <div class="title"> ${elem.name.toUpperCase()}</div>
-          <div class="number">#${elem.num}</div>
+          <div class="mainInfo">
+            <div class="title"> ${elem.name.toUpperCase()}</div>
+            <div class="number">#${elem.num}</div>
+          </div>
           <div class="sideInfo">
             <div class="maxHp">${elem.stats["max-hp"]}HP</div>
             <div class="maxCp">${elem.stats["max-cp"]}CP</div>
@@ -72,24 +74,54 @@ const displayPokes = (pokemonData) => {
 };
 displayPokes(pokemonList);
 
+const getUserPoke = () => {
+  const getPoke = document.querySelectorAll("[data-poke]")
+  for (let poke of getPoke) {
+    poke.addEventListener('click', (e) => {
+      const target = e.target;
+      const dataIndex = target.parentNode.parentNode.parentNode
+      const pokeIndex = dataIndex.dataset.poke
+      const chosenPoke = pokemonList[pokeIndex - 1]
+      const randomIndex = Math.floor(Math.random() * 251)
+      const randomPoke = pokemonList[randomIndex]
+      console.log(randomPoke)
+      console.log(chosenPoke)
+      pokeBattle(randomPoke, chosenPoke)
+    })
+  }
+}
+
+const pokeBattle = (randomPoke, chosenPoke) => {
+  const randomPokeCP = parseInt(randomPoke.stats["max-cp"])
+  const chosenPokeCP = parseInt(chosenPoke.stats["max-cp"])
+  if (randomPokeCP > chosenPokeCP) {
+    console.log(randomPoke.name + " venceu! CP:" + randomPokeCP)
+  } else if (randomPokeCP < chosenPokeCP) {
+    console.log(chosenPoke.name + " venceu! CP:" + chosenPokeCP)
+  } else {
+    console.log('Empate!')
+  }
+}
+
+getUserPoke()
 const field = document.getElementById("search")
 let autoCompleteValues;
 
-field.addEventListener("input", ({target}) =>{
+field.addEventListener("input", ({ target }) => {
   const fieldContent = target.value.toLowerCase()
   let filterPokes = document.getElementById("card-container")
-   
-  if(fieldContent.length){
+
+  if (fieldContent.length) {
     filterPokes.innerHTML = ''
     autoCompleteValues = filterName(pokemonList, fieldContent)
     sortFilter(autoCompleteValues)
     displayPokes(autoCompleteValues)
 
-  } else{
+  } else {
     filterPokes.innerHTML = ''
     displayPokes(pokemonList)
   }
-  
+
 });
 
 
@@ -146,7 +178,7 @@ const displayPokesGeneration = (pokemonData) => {
 
 
   const pokeCardGeneration = document.getElementById('slider');
-  
+
 
   allPokemonGen = pokemonData.map((elem) => {
     return `
@@ -223,34 +255,34 @@ typeCalc.addEventListener('change', () => {
   const table = document.getElementById("table");
 
 
- 
-  
 
-  
 
-  table.innerHTML = ` 
+
+
+
+  table.innerHTML = `
   <table class=" box-alignment text-color table" >
   <tr>
     <th></th>
     <th>Attack</th>
     <th>Defense</th>
-    
+
   </tr>
   <tr>
     <th>Minimo</th>
     <th class="color-table-info">${minAttack}</th>
-    
-    
+
+
   </tr>
   <tr>
   <th>Maximo</th>
 
     <th class="color-table-info">${maxAttack}</th>
-    
+
   </tr>
   <tr>
-    
-</table>  
+
+</table>
 
   `
 */
