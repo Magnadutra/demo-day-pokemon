@@ -22,33 +22,18 @@ body {
   height: 100%;
 }
 
-.battle {
-  opacity: 0;
-  display: none;
-}
-
-.show {
-  display: block;
-  z-index: 1;
-  position: relative;
-  animation: slide 10s;
-  background-color: #c52018;
-}
-
-
-
 @keyframes slide {
   0% {
-    top: 0px;
+    right: 0px;
   }
   25% {
-    top: 50px;
+    right: -50px;
   }
   50% {
-    top: 100px;
+    right: -100px;
   }
   100% {
-    top: 200px;
+    right: -200px;
   }
 }
 
@@ -107,6 +92,14 @@ body {
   background-size: cover;
   background-position: center;
   background-position-x: 90%;
+}
+
+.winner-random {
+  animation: slide 5s alternate-reverse;
+}
+
+.winner-chosen {
+  animation: slide 5s;
 }
 
 .dashboard {

@@ -73,32 +73,24 @@ displayPokes(pokemonList);
 const battlePage = (randomPoke, chosenPoke) => {
   const randomPokeCP = parseInt(randomPoke.stats["max-cp"])
   const chosenPokeCP = parseInt(chosenPoke.stats["max-cp"])
-  if (randomPokeCP > chosenPokeCP) {
-    console.log(randomPoke.name + " venceu! CP:" + randomPokeCP)
-  } else if (randomPokeCP < chosenPokeCP) {
-    console.log(chosenPoke.name + " venceu! CP:" + chosenPokeCP)
-  } else {
-    console.log('Empate!')
-  }
-
   const container = document.createElement('div');
   container.className = 'battleContainer';
   const template = `
-    <div class='poke1 poke'>
+    <div class='poke1 poke' id="chosenPoke">
       <div class='poke1Info info'>
-        <p>${chosenPoke.name}</p>
-        <p>${chosenPokeCP}</p>
+        <p>${chosenPoke.name.toUpperCase()}</p>
+        <p>MAX-CP: ${chosenPokeCP}</p>
       </div>
       <div>
         <img class="poke1Photo photo" src=" ${chosenPoke.img}"></img>
       </div>
     </div>
-    <div class='poke2 poke'>
-      <div class='poke2Info info'>
-        <p>${randomPoke.name}</p>
-        <p>${randomPokeCP}</p>
+    <div class='poke2 poke' id="randomPoke">
+      <div class='poke2Info info' >
+        <p>${randomPoke.name.toUpperCase()}</p>
+        <p>MAX-CP: ${randomPokeCP}</p>
       </div>
-      <div class="battle-field">
+      <div>
         <img class="poke2Photo photo" src=" ${randomPoke.img}"></img>
       </div>
     </div>
@@ -107,8 +99,37 @@ const battlePage = (randomPoke, chosenPoke) => {
     </section>
 `
   container.innerHTML = template
+
+  const dialogueBox = container.querySelector('.dialogue-box')
+
+
+
+  if (randomPokeCP > chosenPokeCP) {
+    dialogueBox.addEventListener('click', () => {
+      const loserPoke = container.querySelector('#chosenPoke')
+      const winnerPoke = container.querySelector('#randomPoke')
+      loserPoke.style.display = 'none';
+      winnerPoke.classList.add('winner-random');
+    })
+
+  } else if (randomPokeCP < chosenPokeCP) {
+    dialogueBox.addEventListener('click', () => {
+      const loserPoke = container.querySelector('#randomPoke')
+      const winnerPoke = container.querySelector('#chosenPoke')
+      loserPoke.style.display = 'none';
+      winnerPoke.classList.add('winner-chosen')
+    })
+  } else {
+    const randomPoke = container.querySelector('#randomPoke')
+    const chosenPoke = container.querySelector('#chosenPoke')
+    randomPoke.classList.toggle = 'draw'
+    chosenPoke.classList.toggle = 'draw'
+  }
+
+
   return container
 }
+
 
 const renderPage = (randomPoke, chosenPoke) => {
   const main = document.getElementById('root');
