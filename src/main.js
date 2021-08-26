@@ -79,7 +79,6 @@ const battlePage = (randomPoke, chosenPoke) => {
     <div class='poke1 poke' id="chosenPoke">
       <div class='poke1Info info'>
         <p>${chosenPoke.name.toUpperCase()}</p>
-        <p>MAX-CP: ${chosenPokeCP}</p>
       </div>
       <div>
         <img class="poke1Photo photo" src=" ${chosenPoke.img}"></img>
@@ -88,7 +87,6 @@ const battlePage = (randomPoke, chosenPoke) => {
     <div class='poke2 poke' id="randomPoke">
       <div class='poke2Info info' >
         <p>${randomPoke.name.toUpperCase()}</p>
-        <p>MAX-CP: ${randomPokeCP}</p>
       </div>
       <div>
         <img class="poke2Photo photo" src=" ${randomPoke.img}"></img>
@@ -97,19 +95,30 @@ const battlePage = (randomPoke, chosenPoke) => {
     <section class="dialogue-box">
       <img class="box" src="./assets/dialogue-box.png">
     </section>
+    <div id="winner-box" class="box-content" style="display: none">
+    </div>
+    <div class="draw-box" style="display: none"></div>
+
 `
   container.innerHTML = template
 
   const dialogueBox = container.querySelector('.dialogue-box')
-
+  const winnerBox = container.querySelector('#winner-box')
 
 
   if (randomPokeCP > chosenPokeCP) {
     dialogueBox.addEventListener('click', () => {
       const loserPoke = container.querySelector('#chosenPoke')
       const winnerPoke = container.querySelector('#randomPoke')
+
       loserPoke.style.display = 'none';
       winnerPoke.classList.add('winner-random');
+      
+      winnerBox.innerHTML += `
+      <p>${randomPoke.name.toUpperCase()} VENCEU!</p> 
+      <p>MAX-CP: ${randomPokeCP}</p>
+      `
+      winnerBox.style.display = 'block'
     })
 
   } else if (randomPokeCP < chosenPokeCP) {
@@ -118,12 +127,19 @@ const battlePage = (randomPoke, chosenPoke) => {
       const winnerPoke = container.querySelector('#chosenPoke')
       loserPoke.style.display = 'none';
       winnerPoke.classList.add('winner-chosen')
+      winnerBox.style.display = 'block'
+      winnerBox.innerHTML += `
+      <p>${chosenPoke.name.toUpperCase()} VENCEU!</p> 
+      <p>MAX-CP: ${chosenPokeCP}</p>
+      `
     })
   } else {
     const randomPoke = container.querySelector('#randomPoke')
     const chosenPoke = container.querySelector('#chosenPoke')
-    randomPoke.classList.toggle = 'draw'
-    chosenPoke.classList.toggle = 'draw'
+    winnerBox.innerHTML += `
+      <p>EMPATE!</p> 
+      <p>${randomPokeCP} VS ${chosenPokeCP}</p>
+      `
   }
 
 
