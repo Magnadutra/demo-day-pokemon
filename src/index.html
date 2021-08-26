@@ -10,104 +10,70 @@
 </head>
 
 <body>
+  <main id="root">
+    <section class='filterCards'>
+      <menu class="dashboard" id="dashboard">
+        <div class="dash-title">
+          <img class="dash-icon" src="./assets/pokeballl.png">
+          <h3>Poke Lovers</h3>
+        </div>
 
-  <aside class="dashboard" id="dashboard">
+        <nav class="buttonfunction">
 
-    <div class="dash-title">
-      <img class="dash-icon" src="./assets/pokeballl.png">
-      <h3>Poke Lovers</h3>
-    </div>
-    <img class="perfil" src="https://8bitocrafts.files.wordpress.com/2013/03/pokemon-red-sprite2.jpg">
-    <h3 class="text">Bem-vindo treinador pokemon!</h3>
-    <a href="battle.html">
-      <button id="battle">Battle</button>
-    </a>
+          <input type="text" id="search" class="seletor" autocomplete="off" placeholder="Busque um Pokemon!">
 
+          <select class="seletor" id="tipoPokemon" autocomplete="off">
+            <option value="">Filtrar por tipo</option>
+            <option value="fire">fire</option>
+            <option value="water">water</option>
+            <option value="normal">normal</option>
+            <option value="grass">grass</option>
+            <option value="ground">ground</option>
+            <option value="dragon">dragon</option>
+            <option value="dark">dark</option>
+            <option value="steel">steel</option>
+            <option value="flying">flying</option>
+            <option value="electric">electric</option>
+            <option value="ice">ice</option>
+            <option value="rock">rock</option>
+            <option value="poison">poison</option>
+            <option value="bug">bug</option>
+          </select>
 
-    <nav class="buttonfunction">
+          <select class="seletor" name="" id="name" autocomplete="off">
+            <option value="all">Ordenar por Nome</option>
+            <option value="A-Z">A-Z</option>
+            <option value="Z-A">Z-A</option>
+          </select>
 
-      <input type="text" id="search" class="seletor" autocomplete="off" placeholder="Busque um Pokemon!">
+          <select class="seletor" name="" id="num" autocomplete="off">
+            <option value="all">Ordenar por Número</option>
+            <option value="crescent">Crescente</option>
+            <option value="decrescent">Decrescente</option>
+          </select>
 
-      <select class="seletor" id="tipoPokemon" autocomplete="off">
-        <option value="">Filtrar por tipo</option>
-        <option value="fire">fire</option>
-        <option value="water">water</option>
-        <option value="normal">normal</option>
-        <option value="grass">grass</option>
-        <option value="ground">ground</option>
-        <option value="dragon">dragon</option>
-        <option value="dark">dark</option>
-        <option value="steel">steel</option>
-        <option value="flying">flying</option>
-        <option value="electric">electric</option>
-        <option value="ice">ice</option>
-        <option value="rock">rock</option>
-        <option value="poison">poison</option>
-        <option value="bug">bug</option>
-      </select>
+          <select class="seletor" type="submit" id="maxcp" autocomplete="off">
+            <option value="">Ordenar pelo CP</option>
+            <option value="crescent">Crescente</option>
+            <option value="decrescent">Decrescente</option>
+          </select>
 
-      <select class="seletor" name="" id="name" autocomplete="off">
-        <option value="all">Ordenar por Nome</option>
-        <option value="A-Z">A-Z</option>
-        <option value="Z-A">Z-A</option>
-      </select>
-
-      <select class="seletor" name="" id="num" autocomplete="off">
-        <option value="all">Ordenar por Número</option>
-        <option value="crescent">Crescente</option>
-        <option value="decrescent">Decrescente</option>
-      </select>
-
-      <select class="seletor" type="submit" id="maxcp" autocomplete="off">
-        <option value="">Ordenar pelo CP</option>
-        <option value="crescent">Crescente</option>
-        <option value="decrescent">Decrescente</option>
-      </select>
-
-    </nav>
-
-    <h3 class="typeStats" id="typeStats">Selecione um tipo de Pokemon!</h3>
-
-  </aside>
-
-  <div class="circle">
-    <div class="white-circle">
-      <div class="border">
-        <a href="contatos.html"><i data-feather="info"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <main class="main-screen">
-
-    <section class="wrap">
-
-      <select id="ordemGeracao" autocomplete="off">
-        <option value="all">Selecione a geração</option>
-        <option value="kanto">I</option>
-        <option value="johto">II</option>
-      </select>
-
-      <div class="container-carousel">
-        <span id="previous"><i data-feather="chevron-left"></i></span>
-        <span id="next"><i data-feather="chevron-right"></i></span>
-        <div id="slider" class="slider"></div>
-      </div>
-
+        </nav>
+      </menu>
+      <section class="carousel-container">
+        <div class="carousel">
+          <div id="card-container" class="card-container">
+          </div>
+          <span id="previous" class="previous-btn"><i data-feather="chevron-left"></i></span>
+          <span id="next" class="next-btn"><i data-feather="chevron-right"></i></span>
+        </div>
+      </section>
     </section>
-
-    <h1>Aqui você encontra as principais informações dos pokemons do mundo de Pokemon GO!</h1>
-
-    <section id="card-container" class="card-container"></section>
-
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+      feather.replace()
+    </script>
+    <script src="main.js" type="module"></script>
   </main>
-
-  <script src="https://unpkg.com/feather-icons"></script>
-  <script>
-    feather.replace()
-  </script>
-  <script src="main.js" type="module"></script>
-
 </body>
-
 </html>
