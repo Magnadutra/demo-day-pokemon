@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.battle-container {
+  display: flex;
+  justify-content: center;
+}
+
+img{
+  border: 10px solid gold;
+}

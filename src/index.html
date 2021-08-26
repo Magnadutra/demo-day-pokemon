@@ -6,65 +6,67 @@
   <title>Poke Lovers</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css" />
-  <link rel="shortcut icon"
-    href="./assets/pokeballl.png">
+  <link rel="shortcut icon" href="./assets/pokeballl.png">
 </head>
 
 <body>
 
   <aside class="dashboard" id="dashboard">
 
-      <div class="dash-title">
-        <img class="dash-icon" src="./assets/pokeballl.png">
-        <h3>Poke Lovers</h3>
-      </div>
-      <img class="perfil" src="https://8bitocrafts.files.wordpress.com/2013/03/pokemon-red-sprite2.jpg">
-      <h3 class="text">Bem-vindo treinador pokemon!</h3>
-      <button id="random">Random</button>
+    <div class="dash-title">
+      <img class="dash-icon" src="./assets/pokeballl.png">
+      <h3>Poke Lovers</h3>
+    </div>
+    <img class="perfil" src="https://8bitocrafts.files.wordpress.com/2013/03/pokemon-red-sprite2.jpg">
+    <h3 class="text">Bem-vindo treinador pokemon!</h3>
+    <a href="battle.html">
+      <button id="battle">Battle</button>
+    </a>
 
-      <nav class="buttonfunction">
 
-        <input type="text" id="search" class="seletor" autocomplete="off" placeholder="Busque um Pokemon!">
+    <nav class="buttonfunction">
 
-        <select class="seletor" id="tipoPokemon" autocomplete="off">
-          <option value="">Filtrar por tipo</option>
-          <option value="fire">fire</option>
-          <option value="water">water</option>
-          <option value="normal">normal</option>
-          <option value="grass">grass</option>
-          <option value="ground">ground</option>
-          <option value="dragon">dragon</option>
-          <option value="dark">dark</option>
-          <option value="steel">steel</option>
-          <option value="flying">flying</option>
-          <option value="electric">electric</option>
-          <option value="ice">ice</option>
-          <option value="rock">rock</option>
-          <option value="poison">poison</option>
-          <option value="bug">bug</option>
-        </select>
+      <input type="text" id="search" class="seletor" autocomplete="off" placeholder="Busque um Pokemon!">
 
-        <select class="seletor" name="" id="name" autocomplete="off">
-          <option value="all">Ordenar por Nome</option>
-          <option value="A-Z">A-Z</option>
-          <option value="Z-A">Z-A</option>
-        </select>
+      <select class="seletor" id="tipoPokemon" autocomplete="off">
+        <option value="">Filtrar por tipo</option>
+        <option value="fire">fire</option>
+        <option value="water">water</option>
+        <option value="normal">normal</option>
+        <option value="grass">grass</option>
+        <option value="ground">ground</option>
+        <option value="dragon">dragon</option>
+        <option value="dark">dark</option>
+        <option value="steel">steel</option>
+        <option value="flying">flying</option>
+        <option value="electric">electric</option>
+        <option value="ice">ice</option>
+        <option value="rock">rock</option>
+        <option value="poison">poison</option>
+        <option value="bug">bug</option>
+      </select>
 
-        <select class="seletor" name="" id="num" autocomplete="off">
-          <option value="all">Ordenar por Número</option>
-          <option value="crescent">Crescente</option>
-          <option value="decrescent">Decrescente</option>
-        </select>
+      <select class="seletor" name="" id="name" autocomplete="off">
+        <option value="all">Ordenar por Nome</option>
+        <option value="A-Z">A-Z</option>
+        <option value="Z-A">Z-A</option>
+      </select>
 
-        <select class="seletor" type="submit" id="maxcp" autocomplete="off">
-          <option value="">Ordenar pelo CP</option>
-          <option value="crescent">Crescente</option>
-          <option value="decrescent">Decrescente</option>
-        </select>
+      <select class="seletor" name="" id="num" autocomplete="off">
+        <option value="all">Ordenar por Número</option>
+        <option value="crescent">Crescente</option>
+        <option value="decrescent">Decrescente</option>
+      </select>
 
-      </nav>
+      <select class="seletor" type="submit" id="maxcp" autocomplete="off">
+        <option value="">Ordenar pelo CP</option>
+        <option value="crescent">Crescente</option>
+        <option value="decrescent">Decrescente</option>
+      </select>
 
-      <h3 class="typeStats" id="typeStats">Selecione um tipo de Pokemon!</h3>
+    </nav>
+
+    <h3 class="typeStats" id="typeStats">Selecione um tipo de Pokemon!</h3>
 
   </aside>
 
