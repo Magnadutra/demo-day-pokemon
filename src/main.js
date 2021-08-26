@@ -21,18 +21,16 @@ const displayPokes = (pokemonData) => {
   allPokemonCards = pokemonData.map((elem) => {
 
     let props = elem["special-attack"]
-
     let attName = props.map(function (specialAttack) {
       return specialAttack["name"]
-
     })
-
     let attType = props.map(function (typeAttack) {
       return typeAttack["type"]
-
     })
 
-    return allPokemonCards = `<div class="card" id="card" data-poke=${pokemonList.indexOf(elem) + 1}>
+    pokeCard.insertAdjacentHTML("beforeend", `
+      <div class='cardBtnContainer'>
+      <div class="card" id="card" data-poke=${pokemonList.indexOf(elem) + 1}>
         <div class="gridContainerUp" id="gridContainerUp"> 
           <div class="mainInfo">
             <div class="title"> ${elem.name.toUpperCase()}</div>
@@ -67,31 +65,12 @@ const displayPokes = (pokemonData) => {
           </div>
       </div>
     </div>
-`;
-
+`);
   });
-  pokeCard.innerHTML = allPokemonCards.join("");
 };
 displayPokes(pokemonList);
 
-const getUserPoke = () => {
-  const getPoke = document.querySelectorAll("[data-poke]")
-  for (let poke of getPoke) {
-    poke.addEventListener('click', (e) => {
-      const target = e.target;
-      const dataIndex = target.parentNode.parentNode.parentNode
-      const pokeIndex = dataIndex.dataset.poke
-      const chosenPoke = pokemonList[pokeIndex - 1]
-      const randomIndex = Math.floor(Math.random() * 251)
-      const randomPoke = pokemonList[randomIndex]
-      console.log(randomPoke)
-      console.log(chosenPoke)
-      pokeBattle(randomPoke, chosenPoke)
-    })
-  }
-}
-
-const pokeBattle = (randomPoke, chosenPoke) => {
+const battlePage = (randomPoke, chosenPoke) => {
   const randomPokeCP = parseInt(randomPoke.stats["max-cp"])
   const chosenPokeCP = parseInt(chosenPoke.stats["max-cp"])
   if (randomPokeCP > chosenPokeCP) {
@@ -101,9 +80,64 @@ const pokeBattle = (randomPoke, chosenPoke) => {
   } else {
     console.log('Empate!')
   }
+
+  const container = document.createElement('div');
+  container.className = 'battleContainer';
+  const template = `
+    <div class='poke1 poke'>
+      <div class='poke1Info info'>
+        <p>${chosenPoke.name}</p>
+        <p>${chosenPokeCP}</p>
+      </div>
+      <div>
+        <img class="poke1Photo photo" src=" ${chosenPoke.img}"></img>
+      </div>
+    </div>
+    <div class='poke2 poke'>
+      <div class='poke2Info info'>
+        <p>${randomPoke.name}</p>
+        <p>${randomPokeCP}</p>
+      </div>
+      <div class="battle-field">
+        <img class="poke2Photo photo" src=" ${randomPoke.img}"></img>
+      </div>
+    </div>
+    <section class="dialogue-box">
+      <img class="box" src="./assets/dialogue-box.png">
+    </section>
+`
+  container.innerHTML = template
+  return container
 }
 
-getUserPoke()
+const renderPage = (randomPoke, chosenPoke) => {
+  const main = document.getElementById('root');
+  main.innerHTML = '';
+  main.appendChild(battlePage(randomPoke, chosenPoke))
+}
+
+const getUserPoke = (pokemonList) => {
+  const getPoke = document.querySelectorAll("[data-poke]")
+  for (let poke of getPoke) {
+    poke.addEventListener('click', (e) => {
+      const target = e.target;
+      const dataIndex = target.parentNode.parentNode.parentNode
+      const pokeIndex = dataIndex.dataset.poke
+      const chosenPoke = pokemonList[pokeIndex - 1]
+      const randomIndex = Math.floor(Math.random() * 251)
+      const randomPoke = pokemonList[randomIndex]
+      //const battleField = document.querySelector('#battle-field')
+      //battleField.classList.toggle("show")
+      console.log(chosenPoke)
+      console.log(randomPoke)
+
+      renderPage(randomPoke, chosenPoke)
+    })
+  }
+}
+
+getUserPoke(pokemonList)
+
 const field = document.getElementById("search")
 let autoCompleteValues;
 
@@ -114,16 +148,15 @@ field.addEventListener("input", ({ target }) => {
   if (fieldContent.length) {
     filterPokes.innerHTML = ''
     autoCompleteValues = filterName(pokemonList, fieldContent)
-    sortFilter(autoCompleteValues)
     displayPokes(autoCompleteValues)
+    getUserPoke(pokemonList)
 
   } else {
     filterPokes.innerHTML = ''
     displayPokes(pokemonList)
+    getUserPoke(pokemonList)
   }
-
 });
-
 
 let selecionarPorTipo;
 const filtrar = document.getElementById("tipoPokemon");
@@ -133,7 +166,7 @@ filtrar.addEventListener('change', () => {
   selecionarPorTipo = filtrar.value;
 
   displayPokes(filterType(pokemonList, selecionarPorTipo));
-
+  getUserPoke(pokemonList)
 });
 
 let ordenarMaxCp;
@@ -145,6 +178,7 @@ ordenarPorCP.addEventListener('change', () => {
 
   sortCp(pokemonList, ordenarMaxCp)
   displayPokes(pokemonList)
+  getUserPoke(pokemonList)
 })
 
 let ordernarPorNumeros;
@@ -156,7 +190,7 @@ ordenar.addEventListener('change', () => {
 
   ordenarPorNum(pokemonList, ordernarPorNumeros);
   displayPokes(pokemonList);
-
+  getUserPoke(pokemonList)
 });
 
 
@@ -169,10 +203,10 @@ ordenarNomes.addEventListener('change', () => {
 
   ordenarPorNome(pokemonList, ordenarPorNomes);
   displayPokes(pokemonList);
-
+  getUserPoke(pokemonList)
 });
 
-let allPokemonGen;
+/*let allPokemonGen;
 const pokemonListGeneration = data.pokemon;
 const displayPokesGeneration = (pokemonData) => {
 
@@ -212,19 +246,29 @@ ordenarGeracao.addEventListener('change', () => {
 
 });
 
-
+*/
 const nextEl = document.getElementById('next');
 const previousEl = document.getElementById('previous');
-const sliderEl = document.getElementById('slider')
+const sliderEl = document.getElementById('card-container');
+const imgWidth = sliderEl.offsetWidth;
+var scrollPerClick = 0;
+var scrollAmount = 0;
 
 function onNextClick() {
-
-  const imgWidth = sliderEl.offsetWidth;
   sliderEl.scrollLeft += imgWidth;
 }
 
+
 function onPreviousClick() {
-  const imgWidth = sliderEl.offsetWidth;
+  /*sliderEl.scrollTo({
+    top:0,
+    left: (scrollAmount -= imgWidth),
+    behavior: 'smooth'
+  });
+
+  if(scrollAmount < 0) {
+    scrollAmount = 0;
+  }*/
   sliderEl.scrollLeft -= imgWidth;
 }
 
@@ -240,49 +284,3 @@ typeCalc.addEventListener('change', () => {
 
 })
 
-
-/*
-
- const estatisticas = data.pokemon;
-
-
-
-  let baseAttack = estatisticas.map(baseAttack => baseAttack.stats['base-attack']);
-  let minAttack = baseAttack.reduce((a, b) => Math.min(a, b));
-  let maxAttack = baseAttack.reduce((a, b) => Math.max(a, b));
-  //let somAttack = baseAttack.reduce((a, b) => a + b);
- // let mediaAttack = parseInt(somAttack / baseAttack.length);
-  const table = document.getElementById("table");
-
-
-
-
-
-
-
-  table.innerHTML = `
-  <table class=" box-alignment text-color table" >
-  <tr>
-    <th></th>
-    <th>Attack</th>
-    <th>Defense</th>
-
-  </tr>
-  <tr>
-    <th>Minimo</th>
-    <th class="color-table-info">${minAttack}</th>
-
-
-  </tr>
-  <tr>
-  <th>Maximo</th>
-
-    <th class="color-table-info">${maxAttack}</th>
-
-  </tr>
-  <tr>
-
-</table>
-
-  `
-*/
