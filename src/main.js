@@ -94,6 +94,7 @@ const battlePage = (randomPoke, chosenPoke) => {
     </div>
     <section class="dialogue-box">
       <img class="box" src="./assets/dialogue-box.png">
+      <p class='message'>Um Pokemon selvagem apareceu...</p>
     </section>
     <div id="winner-box" class="box-content" style="display: none">
     </div>
