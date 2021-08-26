@@ -34,7 +34,7 @@ body {
   flex-shrink: 0;
 }
 
-.container {
+.container-card {
   display: flex;
   align-items: center;
   justify-content: center;
