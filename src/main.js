@@ -76,6 +76,8 @@ const battlePage = (randomPoke, chosenPoke) => {
   const container = document.createElement('div');
   container.className = 'battleContainer';
   const template = `
+  <div class="text-box">
+  
     <div class='poke1 poke' id="chosenPoke">
       <div class='poke1Info info'>
         <p>${chosenPoke.name.toUpperCase()}</p>

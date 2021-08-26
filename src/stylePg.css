@@ -113,6 +113,10 @@ h1{
   animation: 1.0s;
 }
 
+a{
+  text-decoration: none;
+}
+
 @media (max-width: 600px) {
 
     h1{
