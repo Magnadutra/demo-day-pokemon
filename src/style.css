@@ -12,16 +12,112 @@
   font-family: "Roboto", "Pixel", sans-serif;
 }
 
-.dashboard {
-  width: 218px;
+body {
   height: 100vh;
+  width: 100vw;
+}
+
+.filterCards {
+  width: 100%;
+  height: 100%;
+}
+
+.battle {
+  opacity: 0;
+  display: none;
+}
+
+.show {
+  display: block;
+  z-index: 1;
+  position: relative;
+  animation: slide 10s;
+  background-color: #c52018;
+}
+
+
+
+@keyframes slide {
+  0% {
+    top: 0px;
+  }
+  25% {
+    top: 50px;
+  }
+  50% {
+    top: 100px;
+  }
+  100% {
+    top: 200px;
+  }
+}
+
+.box {
+  width: 500px;
+  height: 150px;
+}
+
+.battleContainer {
+  display: flex;
+  border: 5px solid gold;
+  width: 70%;
+  height: 800px;
+  background-color: tomato;
+  background-image: url(./assets/pokefield.png);
+  background-repeat: no-repeat;
+  margin: 0 auto;
+}   
+
+.poke {
+  height: 350px;
+  width: 200px;
+  position: absolute;
+}
+
+.info {
+  border: 4px solid #364933;
+  border-radius: 8px 0 8px 0;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 100px;
+  background-color: #F7F6D0;
+  
+}
+
+.poke1 {
+  top: 40%;
+  height: 350px;
+  margin-left: 50px;
+}
+
+.poke2 {
+  top: 20%;
+  left:60%;
+}
+
+.poke1Photo {
+  height: 170px;
+  background-size: cover;
+  background-position: center;
+  transform: scaleX(-1)
+}
+
+.poke2Photo {
+  height: 170px;
+  background-size: cover;
+  background-position: center;
+  background-position-x: 90%;
+}
+
+.dashboard {
+  width: 100%;
+  height: 20vh;
   display: flex;
   flex-direction: column;
-  position: fixed;
   align-items: center;
   background-color: #c52018;
   border-right: 20px solid #292929;
-  z-index: 1;
+  margin-bottom: 20px;
 }
 
 h1{
@@ -54,43 +150,6 @@ h3{
   padding: 4px;
 }
 
-.circle {
-  display: flex;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background-color: #292929;
-  margin-left: 170px;
-  margin-top: 230px;
-  position: fixed;
-  z-index: 2;
-}
-
-.white-circle {
-  margin-inline: auto;
-  margin-top: 10px;
-  background-color: white;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-}
-
-.border {
-  display: flex;
-  justify-content: center;
-  margin-inline: auto;
-  margin-top: 6px;
-  background-color: whitesmoke;
-  width: 48px;
-  height: 48px;
-  border: 4px solid #292929;
-  border-radius: 50%;
-}
-
-a{
-  align-self: center;
-}
-
 .text, .typeStats{
   color: white;
   font-family: "Pixels";
@@ -99,58 +158,98 @@ a{
 }
 
 .typeStats{
-  margin-top: 60px;
-}
-
-.perfil {
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
 .buttonfunction {
-  width: 160px;
-  height: 240px;
-  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;  
 }
 
 .seletor {
   border-radius: 5px;
   cursor: pointer;
   padding: 10px;
-  margin-bottom: 20px;
+  margin-right: 20px;
   display: flex;
   border: 3px solid black;
   width: 160px;
   height: 40px;
+  top: 0;
+  z-index: 3;
 }
 
-.wrap {
-  margin: 0 auto;
-  margin-top: 15px;
-  height: 180px;
-  width: 84%;
+.carousel-container {
+  display: flex;
+  justify-content: center;
+}
+
+.carousel {
+  height: 500px;
+  width: 85%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.previous-btn, .next-btn {
+  color: black;
+  width: 45px;
+  margin-top: 240px;
+  line-height: 2px;
+  font-size: 25px;
+  text-align: center;
+  background-color: white;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); 
+  border-radius: 100px;
   position: absolute;
-  overflow: hidden;
-  align-items: center;
+  padding: 10px;
+  transition: 0.2s;
+  cursor: pointer;
 }
 
-.pictures {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: transparent;
-  border: 2px solid #070707;
-  background: linear-gradient(
-    195deg,
-    #ad2c46 0%,
-    #d12547 44%,
-    #262122 41%,
-    #262122 50%,
-    #fff 46%,
-    #fff 100%
-  );
+.previous-btn:hover, .next-btn:hover {
+  background-color: #eb3026;
+  box-shadow: 0px 15px 20px rgba(251, 111, 111, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+
+}
+
+.previous-btn {
+  left: -50px;
+}
+.next-btn {
+  left: unset;
+  right: -50px;
+}
+
+.card-container {
+  height: 500px;
+  width: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  margin-top: -30px;
+  /*scroll-behavior: smooth*/
+}
+
+.card {
+  cursor: pointer;
+  transition: 0.5s ease;
+  z-index: 2;
+}
+
+.cardBtnContainer:hover {
+  transform: scale(1.1);  
+}
+
+.cardBtnContainer:hover .choosePokemon{
+  display: block;
 }
 
 .main-screen{
@@ -164,9 +263,9 @@ a{
 .card {
   --color1: rgb(0, 231, 255);
   --color2: rgb(255, 0, 231);
-  box-shadow: -13px -13px 13px -15px var(--color1),
+  box-shadow: -12px -13px 13px -15px var(--color1),
     13px 13px 13px -15px var(--color2), 0 0 4px 2px rgba(255, 255, 255, 0.5),
-    0 35px 25px -15px rgba(0, 0, 0, 0.3);
+    0 35px 25px -15px rgba(116, 114, 114, 0.3);
   border-radius: 16px;
   border: 10px solid gold;
   background: linear-gradient(
@@ -178,26 +277,25 @@ a{
     #ffffa4,
     #fff870
   );
-  width: 290px;
+  width: 260px;
   background-color: rgb(71, 60, 45);
-  height: 390px;
+  height: 360px;
   display: inline-block;
-  margin-left: 20px;
+  margin-left: 13px;
   flex-shrink: 0;
+  margin: 20px;
 }
 
 .gridContainerUp {
   display: grid;
-  grid-template-columns: 50% 30% 20%;
+  grid-template-columns: 40% 35% 25%;
   grid-template-rows: 32px 2px 140px 15px;
   position: relative;
-  border: 1px solid rgba(0, 0, 0, 0.8);
+  /*border: 1px solid rgba(0, 0, 0, 0.8);*/
   border-radius: 5px;
 }
 
 .title {
-  grid-row: 1;
-  grid-column: 1;
   padding: 10px;
   font-size: 15px;
   text-align: left;
@@ -205,12 +303,17 @@ a{
 }
 
 .number {
-  grid-row: 1;
-  grid-column: 2;
   padding: 10px;
   font-size: 12px;
   text-align: right;
   font-weight: bold;
+  align-self: flex-end;
+}
+
+.mainInfo {
+  display: flex;
+  grid-row: 1;
+  grid-column: 1 / 2;
 }
 
 .sideInfo {
@@ -236,7 +339,7 @@ a{
   display: flex;
   align-self: center;
   justify-content: center;
-  width: 260px;
+  width: 235px;
   height: 140px;
 }
 
@@ -265,9 +368,9 @@ a{
 .gridContainerDown {
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 85px 1px 95px;
+  grid-template-rows: 65px 1px;
   position: relative;
-  border: 1px solid rgba(0, 0, 0, 0.8);
+  /*border: 1px solid rgba(0, 0, 0, 0.8);*/
   border-radius: 5px;
 }
 
@@ -292,10 +395,10 @@ a{
 .typeList,
 .weakList,
 .resistList {
-  font-size: 11.5px;
+  font-size: 10px;
   text-align: center;
   font-weight: bolder;
-  padding: 7px;
+  padding: 3px;
 }
 
 .attackList {
@@ -318,6 +421,22 @@ a{
   grid-column: 2;
 }
 
+.choosePokemon {
+  margin-top: 10px;
+  display: none;  
+}
+
+.chooseBtn {
+  padding: 10px;
+  background-color: white;
+  color: red;
+  border: 1px solid red;
+  border-radius: 50px;
+  font-family: Pixels;
+  cursor: pointer;
+}
+
+/*
 .card-container {
   display: flex;
   width: 100%;
@@ -326,8 +445,10 @@ a{
   flex-wrap: wrap;
   gap: 25px;
   justify-content: center;
-}
-
+  transform: translateX(0);
+  transition: transform 0.25;
+}*/
+/*
 #ordemGeracao {
   width: 50px;
   height: 80px;
@@ -341,7 +462,7 @@ a{
   z-index: 2;
 }
 
-.slider {
+/*.slider {
   padding-left: 40px;
   margin: 0 auto;
   width: 100%;
@@ -403,9 +524,22 @@ a{
 .info_icon {
   cursor: pointer;
 }
+*/
+/*@media (max-width: 1000px){
 
-@media (max-width: 1000px){
-
+  .carousel {
+    width: 90%;
+  }
+  .buttonfunction{
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;  
+  }      
+  .seletor{
+    
+    margin-right: 10px ;
+  }
+/*
   .card-container{
     width: 100%;
     gap: 22px;
@@ -478,9 +612,51 @@ a{
   }
 
 }
+*/
+@media (max-width: 375px) {
+  .dash-title {
+    display: none;
+  }
+}
 
-@media (min-width: 360px) and (max-width: 767px){
+@media (max-width: 670px) {
+  
+  .carousel {
+    width: 70%;
+  }
 
+  .dashboard {
+    height: 25vh;
+  }
+
+  .dash-title h3, .typeStats {
+    font-size: 15px;
+  }
+  .buttonfunction{
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;  
+  }      
+  .seletor{
+    width: 120px;
+    height: 35px;
+    margin-right: 10px;
+    padding: 0px;
+    font-size: 11px;
+  }
+} 
+
+@media (min-width: 670px) and (max-width: 940px){
+  .seletor{
+    width: 120px;
+    height: 35px;
+    margin-right: 10px;
+    padding: 0px;
+    font-size: 11px;
+  }
+}
+
+/*
   .card-container{
     width: 100%;
   }
@@ -593,4 +769,4 @@ a{
     margin-bottom: 10px;
     font-size: 11px;
   }
-}
+  */
