@@ -1,13 +1,19 @@
-* {
-    margin: 0;
-    box-sizing: border-box;
-    padding: 0;
-    font-family: "Roboto", sans-serif;
-  }
+/* @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
-body {
-     background-image: url();
+@font-face {
+  font-family: Pixels;
+  src: url(./assets/LLPIXEL3.ttf);
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+
 }
+
+/* CARDS */
 
 .card {
   --color1: rgb(0, 231, 255);
@@ -26,9 +32,9 @@ body {
     #ffffa4,
     #fff870
   );
-  width: 290px;
+  width: 230px;
   background-color: rgb(71, 60, 45);
-  height: 390px;
+  height: 300px;
   display: inline-block;
   margin-left: 20px;
   flex-shrink: 0;
@@ -38,7 +44,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
+  flex-wrap: wrap;
   margin-top: 200px;
   }
 
@@ -49,7 +55,7 @@ body {
 .gridContainerUp {
   display: grid;
   grid-template-columns: 70% 30%;
-  grid-template-rows: 32px 2px 180px 20px;
+  grid-template-rows: 32px 2px 150px 20px;
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.8);
   border-radius: 5px;
@@ -76,8 +82,8 @@ img {
   display: flex;
   align-self: center;
   justify-content: center;
-  width: 260px;
-  height: 140px;
+  width: 200px;
+  height: 110px;
 }
 
 .downInfo {
@@ -121,7 +127,7 @@ h5{
 .gridContainerDown {
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 132px;
+  grid-template-rows: 75px;
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.8);
   border-radius: 5px;
@@ -129,15 +135,20 @@ h5{
 
 .info_icon{
   color: black;
-  padding: 50px;
+  padding: 20px;
+  margin-left: 20px;
 }
 
-#githubnessa, #githubjulli{
+.coluna-github{
   grid-column: 1;
 }
 
-#linkedinnessa, #linkedinjulli{
+.coluna-linkedin{
   grid-column: 2;
+}
+
+.close {
+  color: red;
 }
 
 @media (min-width: 360px) and (max-width: 439px){
