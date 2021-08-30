@@ -1,0 +1,181 @@
+.battle-background {
+  background-color: rgb(195, 180, 203);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+
+.battle-field {
+  display: flex;
+  width: 100%;
+  height: 80%;
+}
+
+.battle-container {
+  display: flex;
+  border: 10px solid gold;
+  border-radius: 5%;
+  width: 50%;
+  height: 80vh;
+  margin: 0 auto;
+  position: relative;
+  background-color: rgb(255, 230, 138);  
+}   
+
+.poke {
+  height: 350px;
+  width: 200px;
+  position: absolute;
+}
+
+.info {
+  border: 4px solid #364933;
+  border-radius: 8px 0 8px 0;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 80px;
+  background-color: #F7F6D0;
+  box-shadow: 3px 7px #414b47;  
+}
+
+.info p{
+  font-family: "Pixels";
+}
+
+.poke1 {
+  top: 35%;
+  left: 10%;
+}
+
+.poke2 {
+  top: 0%;
+  left: 65%;
+}
+
+.poke1Photo {
+  height: 170px;
+  background-size: cover;
+  background-position: center;
+  transform: scaleX(-1)
+}
+
+.poke2Photo {
+  height: 170px;
+  background-size: cover;
+  background-position: center;
+  background-position-x: 90%;
+}
+
+.winner-random {
+  animation: slideRandomPoke 2s;
+  animation-fill-mode: forwards;
+}
+
+.winner-chosen {
+  animation: slideChosenPoke 2s;
+  animation-fill-mode: forwards;
+}
+
+.box-content {
+  border-radius: 16px;
+  border: 5px solid gold;
+  background: linear-gradient(
+    to bottom right,
+    #ffffa4,
+    #fff870,
+    #fff200,
+    #fff870,
+    #ffffa4,
+    #fff870
+  );
+  width: 150px;
+  height: 100px;
+  padding: 10px;
+  text-align: center;
+  animation: slideBox 2s;
+  animation-fill-mode: forwards;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  overflow: auto;
+  box-shadow: 5px 5px rgb(190, 181, 149);
+}
+
+.box-content p {
+  font-family: Pixels;
+}
+
+@keyframes slideChosenPoke {
+  0% {
+    top: 35%;
+    left: 10%;
+  }
+  100% {
+    top: 12%;
+    left: 38%;
+  }
+}
+
+@keyframes slideRandomPoke {
+  0% {
+    top: 7%;
+    left: 65%;
+  }
+  100% {
+    top: 12%;
+    left: 38%;
+  }
+}
+
+@keyframes slideBox {
+  0% {
+    top: 40%;
+    left: 45%;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    top: 40%;
+    left: 45%;
+  }
+}
+
+.dialogue-box {
+  display: block;
+  border-radius: 20%;
+  position: absolute;
+  top: 80%;  
+  background-color: rgb(253, 233, 196);
+  margin: 0 auto;
+  width: 100%;
+  height: 20%;
+}
+
+.flash-box {
+  animation: flash 1s linear infinite;
+}
+
+@keyframes flash {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0;
+  }
+}
+
+.box {
+  width: 100%;
+  height: 100%;  
+}
+
+.message {
+  position: absolute;
+  color: black;
+  top: 20%;
+  left: 8%;
+  font-family: 'Pixels';
+  font-size: 25px;
+}
