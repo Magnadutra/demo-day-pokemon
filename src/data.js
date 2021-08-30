@@ -1,7 +1,6 @@
 const filtrarPelaGeracao = (data, valor) => {
   const filtrarPokemonPelaGeracao = data.filter(
     pokemon => pokemon.generation.name === valor,
-
   );
 
   return filtrarPokemonPelaGeracao;
@@ -49,12 +48,6 @@ const filterType = (data, valor) => {
   
 };
 
-const typeStats = (data, type) => {
-  const percentType = data.filter(pokemon => 
-  pokemon.type.includes(type))
-  return Math.round((percentType.length/data.length * 100))
-}
-
 function filterName(data, valor){
   const arrayName = data.filter(pokemon => pokemon.name.indexOf(valor)> -1)
   return arrayName
@@ -70,7 +63,6 @@ export {
   sortCp, 
   filterType,
   ordenarPorNome,
-  typeStats,
   filterName,
   sortFilter
 };
